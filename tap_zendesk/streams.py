@@ -463,9 +463,7 @@ class Tags(Stream):
     key_properties = ["name"]
 
     def sync(self, state): # pylint: disable=unused-argument
-        # NB: Setting page to force it to paginate all tags, instead of just the
-        #     top 100 popular tags
-        tags = self.client.tags(page=1)
+        tags = self.client.tags()
         for tag in tags:
             yield (self.stream, tag)
 
